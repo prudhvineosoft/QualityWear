@@ -1,0 +1,22 @@
+body {
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    background-image: url('../images/welcome.jpg');
+    background-size: cover;
+}
+.button {
+    font-size: 50px;
+    background-image: url('../images/button.jpg');
+    background-size: cover;
+    border: none;
+    padding: 10px 50px 10px 50px ;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+    border-radius: 10px;
+}
+.button-spacing {
+    height: 90vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 20%;
+}

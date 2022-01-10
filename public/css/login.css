@@ -1,0 +1,18 @@
+
+.bg-container {
+    font-family: 'Nunito', sans-serif;
+    box-sizing: border-box;
+    background-image: url('../images/welcome.jpg');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 20%;    
+}
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
