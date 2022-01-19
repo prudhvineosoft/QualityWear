@@ -123,7 +123,8 @@
             @endif
             @if(Auth::user()->hasRole('admin|superadmin'))
             <li class="nav-item mt-2">
-              <a href="/dashboard/config" class="nav-link {{ (request()->is('dashboard/config*'))  ? 'active' : '' }}">
+              <a href="/dashboard/configuration"
+                class="nav-link {{ (request()->is('dashboard/configuration*'))  ? 'active' : '' }}">
 
                 <i class="fab fa-airbnb nav-icon"></i>
                 <p>

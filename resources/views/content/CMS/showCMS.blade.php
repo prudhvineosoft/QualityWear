@@ -41,7 +41,7 @@
             <div class="card  ">
                 <div class="card-header bg-gray table-heading pl-5 pr-5">
                     <h3 class="card-title">CMS</h3>
-                    <a href="configuration/create" class="btn btn-primary ml-auto">Add configruation</a>
+                    <a href="cms/create" class="btn btn-primary ml-auto">Add CMS</a>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body bg-dark text-center">
@@ -49,10 +49,10 @@
                         <thead>
                             <tr>
                                 <th>Sno</th>
-                                <th>Contact</th>
-                                <th>Notification Email</th>
-                                <th>Admin Email</th>
-                                <th>Actions</th>
+                                <th>Title</th>
+                                <th>Description</th>
+                                <th>Image</th>
+                                <th colspan="2">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,11 +62,25 @@
                             @foreach($data as $i)
                             <tr class="tr-custom">
                                 <td>{{$sn++}}</td>
-                                <td>{{$i->phone_no}}</td>
-                                <td>{{$i->notification_email}}</td>
-                                <td>{{$i->admin_email}}</td>
+                                <td>{{$i->title}}</td>
+                                <td>{{$i->description}}</td>
                                 <td>
-                                    <a href="/dashboard/configuration/{{$i->id}}/edit" class="btn btn-info">Edit</a>
+                                    <img src="{{url('uploads/'.$i->image_path)}}" height="50px" width="50px" />
+                                </td>
+
+                                <td>
+                                    <a href="/dashboard/cms/{{$i->id}}/edit" class="btn btn-info">Edit</a>
+                                </td>
+                                <td>
+                                    <form action="/dashboard/cms/{{$i->id}}/" method="post">
+                                        @csrf()
+                                        @method('delete')
+                                        <button type="submit"
+                                            onclick="return confirm('Do you really want to delete banner')"
+                                            class="btn btn-danger">
+                                            Delete
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
@@ -85,7 +99,6 @@
             event.preventDefault();
         }
     </script>
-
     @endsection
 </body>
 

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Coupon;
 use Illuminate\Http\Request;
+use App\Models\configuration;
 
-class ApiCouponController extends Controller
+class configurationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class ApiCouponController extends Controller
      */
     public function index()
     {
-        $couponData = Coupon::orderBy('id', 'DESC')->get();
-        return response(['couponData' => $couponData, 'err' => 0, 'msg' => 'success banner data'], 200);
+        $data = configuration::all();
+        return view("content.Configuration.configuration", compact("data"));
     }
 
     /**
@@ -25,7 +25,7 @@ class ApiCouponController extends Controller
      */
     public function create()
     {
-        //
+        return view('content.Configuration.addConfiguration');
     }
 
     /**
@@ -36,7 +36,12 @@ class ApiCouponController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = configuration::insert([
+            "phone_no" => $request->phone,
+            "admin_email" => $request->adminEmail,
+            "notification_email" => $request->notificationEmail
+        ]);
+        return redirect("dashboard/configuration");
     }
 
     /**
@@ -58,7 +63,8 @@ class ApiCouponController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = configuration::find($id);
+        return view("content.Configuration.editconfiguration", compact("data"));
     }
 
     /**
@@ -70,7 +76,12 @@ class ApiCouponController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        configuration::where('id', $id)->update([
+            "phone_no" => $request->phone,
+            "admin_email" => $request->adminEmail,
+            "notification_email" => $request->notificationEmail,
+        ]);
+        return redirect("dashboard/configuration");
     }
 
     /**

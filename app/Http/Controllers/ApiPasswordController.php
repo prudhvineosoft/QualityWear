@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Coupon;
 use Illuminate\Http\Request;
 
-class ApiCouponController extends Controller
+class ApiPasswordController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class ApiCouponController extends Controller
      */
     public function index()
     {
-        $couponData = Coupon::orderBy('id', 'DESC')->get();
-        return response(['couponData' => $couponData, 'err' => 0, 'msg' => 'success banner data'], 200);
+        //
     }
 
     /**

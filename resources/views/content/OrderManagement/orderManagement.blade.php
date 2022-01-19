@@ -82,7 +82,7 @@
                                 <td class="text-success font-weight-bold">Accepted</td>
 
                                 @endif
-                                <td>{{ $each->created_id }}</td>
+                                <td>{{ $each->created_at }}</td>
                                 <td>
                                     <div class="d-flex justify-content-center">
                                         <a href="orderManagement/{{ $each->id }}"><i

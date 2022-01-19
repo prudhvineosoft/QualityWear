@@ -1,11 +1,13 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
-use App\Models\Coupon;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
-class ApiCouponController extends Controller
+class PasswordApiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,7 @@ class ApiCouponController extends Controller
      */
     public function index()
     {
-        $couponData = Coupon::orderBy('id', 'DESC')->get();
-        return response(['couponData' => $couponData, 'err' => 0, 'msg' => 'success banner data'], 200);
+        //
     }
 
     /**
@@ -47,7 +48,8 @@ class ApiCouponController extends Controller
      */
     public function show($id)
     {
-        //
+        $details = User::where('email', $id)->get();
+        return response(["details" => $details]);
     }
 
     /**
@@ -70,7 +72,23 @@ class ApiCouponController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $details = User::where('email', $id)->first();
+        $dbpassword = $details->password;
+        $oldpassword = $request->oldpassword;
+        $newpassword = $request->newpassword;
+        $confirmpassword = $request->confirmpassword;
+        if ($newpassword == $confirmpassword) {
+            if (Hash::check($oldpassword, $dbpassword)) {
+                $data = User::where('email', $id)->update([
+                    "password" => Hash::make($newpassword)
+                ]);
+                return response()->json(["message" => "Changed password"]);
+            } else {
+                return response()->json(["message" => "not updated"]);
+            }
+        } else {
+            return response()->json(["message" => "Mismatched confirm password"]);
+        }
     }
 
     /**

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Coupon;
+use App\Models\CMS_management;
 use Illuminate\Http\Request;
 
-class ApiCouponController extends Controller
+class cmsApi extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class ApiCouponController extends Controller
      */
     public function index()
     {
-        $couponData = Coupon::orderBy('id', 'DESC')->get();
-        return response(['couponData' => $couponData, 'err' => 0, 'msg' => 'success banner data'], 200);
+        $data = CMS_management::all();
+        return response()->json(["cms" => $data]);
     }
 
     /**
@@ -47,7 +47,8 @@ class ApiCouponController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = CMS_management::find($id);
+        return response()->json(["cms" => $data]);
     }
 
     /**

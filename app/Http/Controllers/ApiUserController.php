@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\UserAddress;
 use App\Models\UserStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ApiUserController extends Controller
 {
@@ -50,17 +51,12 @@ class ApiUserController extends Controller
      */
     public function show($id)
     {
-        $udUser = User::where('id', $id)->get();
-        $udStatus = UserStatus::where('user_id', $id)->get();
-        $udRole =  User::join('user_statuses', 'users.id', '=', 'user_statuses.user_id')
-            ->join('role_user', 'users.id', '=', 'role_user.user_id')
-            ->join('roles', 'roles.id', '=', 'role_user.role_id')->where('users.id', $id)->get();
-        $udAddress = UserAddress::where('user_id', $id)->get();
-        $roles = Role::orderBy('id')->get();
+        $udUser = User::where('email', $id)->first();
+        $udStatus = UserStatus::where('user_id', $udUser->id)->first();
+        $udAddress = UserAddress::where('user_id', $udUser->id)->get();
+        $orderData = OrderManagement::join('products', 'products.id', '=', 'order_management.product_id')->where('order_management.user_id', $udUser->id)->get();
 
-        $orderData = OrderManagement::where('user_id', $id)->orderBy('id', 'DESC')->paginate(10);
-
-        return response(['udUser' => $udUser, 'udStatus' => $udStatus, 'udRole' => $udRole, 'udAddress' => $udAddress, 'roles' => $roles, 'orderData' => $orderData], 200);
+        return response(['udUser' => $udUser, 'udStatus' => $udStatus,  'udAddress' => $udAddress,  'orderData' => $orderData], 200);
     }
 
     /**

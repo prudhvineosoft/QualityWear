@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrderManagement;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 
 class ApiOrderController extends Controller
 {
@@ -35,7 +38,42 @@ class ApiOrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $userdata = User::where('email', $request->user_id)->first();
+        // return response($userdata->id);
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'order_id' => 'required',
+            'product_id' => 'required',
+            'payment_method' => 'required',
+            'address_id' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response(['error' => $validator->errors(), 'validation error', 'err' => 1], 200);
+        } else {
+            $order = new OrderManagement();
+            $order->user_id = $userdata->id;
+            $order->order_id = $request->order_id;
+            $order->product_id = $request->product_id;
+            $order->payment_method = $request->payment_method;
+            $order->address_id = $request->address_id;
+            $order->coupon_code = $request->coupon_code;
+            $order->order_total = $request->order_total;
+            if ($order->save()) {
+                return response(['order' => $order, 'message' => 'order create successfully', 'err' => 0], 200);
+            } else {
+                return response(['msg' => 'order not added', 'err' => 1], 200);
+            }
+
+            $email = $request->user_id;
+            $data = $request->all();
+            $data = ['name' => 'Quality Wear', 'data' => $data];
+            $user['to'] = $email;
+            Mail::send('content.Extras.mail', $data, function ($messages) use ($user) {
+                $messages->to($user['to']);
+                $messages->to('prudhvi.inumarthi@gmail.com');
+                $messages->subject('Order Placed');
+            });
+        }
     }
 
     /**

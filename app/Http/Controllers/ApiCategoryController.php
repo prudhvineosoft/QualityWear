@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Banner;
 use App\Models\Category;
+use App\Models\Products;
 use Illuminate\Http\Request;
 
 class ApiCategoryController extends Controller
@@ -48,7 +49,9 @@ class ApiCategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $productsData = Category::join('products', 'products.category_id', '=', 'categories.id')->where('c_name', $id)
+            ->get();
+        return response(['productsData' => $productsData, 'err' => 0, 'msg' => 'success Products data'], 200);
     }
 
     /**

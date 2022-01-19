@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\cmsController;
+use App\Http\Controllers\configurationController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ReportsController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +44,9 @@ Route::group(['middleware' => ['auth', 'role:admin|superadmin']], function () {
 
     Route::resource('dashboard/coupon', CouponController::class);
     Route::resource('dashboard/contacts', ContactsController::class);
+    Route::resource('dashboard/cms', cmsController::class);
+    Route::resource('dashboard/configuration', configurationController::class);
+    Route::resource('dashboard/reports', ReportsController::class);
 });
 // for inventory manager
 Route::group(['middleware' => ['auth', 'role:inventory manager|admin|superadmin']], function () {

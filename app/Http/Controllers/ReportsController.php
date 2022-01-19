@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Coupon;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class ApiCouponController extends Controller
+class ReportsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,27 @@ class ApiCouponController extends Controller
      */
     public function index()
     {
-        $couponData = Coupon::orderBy('id', 'DESC')->get();
-        return response(['couponData' => $couponData, 'err' => 0, 'msg' => 'success banner data'], 200);
+        // $user_info = DB::table('products')
+        //     ->select('category_id as name', DB::raw('sum(quantity) as r'))
+        //     ->groupBy('category_id')
+        //     ->get();
+        $user_info = Category::join('products', 'products.category_id', '=', 'categories.id')->groupBy('categories.c_name')
+            ->selectRaw('categories.c_name as name, sum(quantity) as r')
+            ->get();
+        // return $user_info;
+        $dataPoints = [];
+
+        foreach ($user_info as $browser) {
+
+            $dataPoints[] = [
+                "name" => $browser->name,
+                "y" => floatval($browser->r)
+            ];
+        }
+        //return $dataPoints;
+        return view("content.Reports.piechart", [
+            "data" => json_encode($dataPoints)
+        ]);
     }
 
     /**
