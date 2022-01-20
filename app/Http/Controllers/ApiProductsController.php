@@ -17,6 +17,8 @@ class ApiProductsController extends Controller
      */
     public function index()
     {
+        $allProducts = Products::with('category', 'productImages')->get();
+        return response(['productsData' => $allProducts, 'err' => 0, 'msg' => 'success Products data'], 200);
         $productsData = Category::join('products', 'products.category_id', '=', 'categories.id')
             ->get();
         return response(['productsData' => $productsData, 'err' => 0, 'msg' => 'success Products data'], 200);
