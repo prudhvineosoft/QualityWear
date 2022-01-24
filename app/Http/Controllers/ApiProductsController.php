@@ -19,9 +19,9 @@ class ApiProductsController extends Controller
     {
         $allProducts = Products::with('category', 'productImages')->get();
         return response(['productsData' => $allProducts, 'err' => 0, 'msg' => 'success Products data'], 200);
-        $productsData = Category::join('products', 'products.category_id', '=', 'categories.id')
-            ->get();
-        return response(['productsData' => $productsData, 'err' => 0, 'msg' => 'success Products data'], 200);
+        // $productsData = Category::join('products', 'products.category_id', '=', 'categories.id')
+        //     ->get();
+        // return response(['productsData' => $productsData, 'err' => 0, 'msg' => 'success Products data'], 200);
     }
 
     /**
@@ -53,9 +53,8 @@ class ApiProductsController extends Controller
      */
     public function show($id)
     {
-        $images = ProductsImages::where('product_id', $id)->get();
-        $productData = Products::where('id', $id)->first();
-        return response(['productData' => $productData, 'images' => $images, 'err' => 0, 'msg' => 'success images data'], 200);
+        $productData = Products::where('id', $id)->with('productImages')->first();
+        return response(['productData' => $productData,  'err' => 0, 'msg' => 'success images data'], 200);
     }
 
     /**

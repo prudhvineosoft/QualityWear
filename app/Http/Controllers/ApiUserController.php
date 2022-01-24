@@ -51,12 +51,15 @@ class ApiUserController extends Controller
      */
     public function show($id)
     {
-        $udUser = User::where('email', $id)->first();
-        $udStatus = UserStatus::where('user_id', $udUser->id)->first();
-        $udAddress = UserAddress::where('user_id', $udUser->id)->get();
-        $orderData = OrderManagement::join('products', 'products.id', '=', 'order_management.product_id')->where('order_management.user_id', $udUser->id)->get();
+        // $udUser = User::where('email', $id)->first();
+        // $udStatus = UserStatus::where('user_id', $udUser->id)->first();
+        // $udAddress = UserAddress::where('user_id', $udUser->id)->get();
+        // $orderData = OrderManagement::join('products', 'products.id', '=', 'order_management.product_id')->where('order_management.user_id', $udUser->id)->get();
 
-        return response(['udUser' => $udUser, 'udStatus' => $udStatus,  'udAddress' => $udAddress,  'orderData' => $orderData], 200);
+        $allUserData = User::with('address', 'userStatus')->where('email', $id)->first();
+        $orderData = OrderManagement::with('productDetails')->where('user_id', $allUserData->id)->get();
+        return response(['allUserData' => $allUserData, 'orderData' => $orderData]);
+        // return response(['udUser' => $udUser, 'udStatus' => $udStatus,  'udAddress' => $udAddress,  'orderData' => $orderData], 200);
     }
 
     /**

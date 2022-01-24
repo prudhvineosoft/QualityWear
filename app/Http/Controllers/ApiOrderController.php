@@ -63,7 +63,7 @@ class ApiOrderController extends Controller
             } else {
                 return response(['msg' => 'order not added', 'err' => 1], 200);
             }
-
+            //sending mail
             $email = $request->user_id;
             $data = $request->all();
             $data = ['name' => 'Quality Wear', 'data' => $data];
