@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-</head>
+@include('layouts.customHead')
 
 <body>
     @extends('layouts.master')
@@ -17,7 +9,7 @@
         <div class="col-md-12 mt-2">
             <div class="bg-transparent d-flex justify-content-between clearfix ">
                 <div>
-                    <a href="/dashboard/product" class="btn btn-secondary float-start mb-4">
+                    <a href="/product" class="btn btn-secondary float-start mb-4">
                         Back
                     </a>
                 </div>
@@ -137,9 +129,8 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form class="bg-dark row" method="POST"
-                                            action="/dashboard/product/{{ $product[0]->id }}" accept-charset="utf-8"
-                                            enctype="multipart/form-data" class="">
+                                        <form class="bg-dark row" method="POST" action="/product/{{ $product[0]->id }}"
+                                            accept-charset="utf-8" enctype="multipart/form-data" class="">
                                             @csrf
                                             @method('PUT')
                                             <div class="col-6">
@@ -304,7 +295,7 @@
                                                 <a href="orderManagement/{{ $each->id }}"><i
                                                         class="far fa-folder-open edit text-secondary"></i></a>
 
-                                                <form method="POST" action="/dashboard/orderManagement/{{ $each->id }}">
+                                                <form method="POST" action="/orderManagement/{{ $each->id }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button onclick="return myFunction();" type="submit"

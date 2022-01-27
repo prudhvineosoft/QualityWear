@@ -49,9 +49,9 @@ class CouponController extends Controller
             $coupon->value = $request->value;
             $coupon->cart_value = $request->cart_value;
             if ($coupon->save()) {
-                return redirect('dashboard/coupon')->with('successCoupon', 'Coupon Added');
+                return redirect('coupon')->with('successCoupon', 'Coupon Added');
             } else {
-                return redirect('dashboard/coupon')->with('errorCoupon', 'Coupon Not Added');
+                return redirect('coupon')->with('errorCoupon', 'Coupon Not Added');
             }
         }
     }
@@ -103,9 +103,9 @@ class CouponController extends Controller
                 'cart_value' => $request->cart_value,
             ]);
             if ($update) {
-                return redirect('dashboard/coupon')->with('successCouponUpdate', 'Coupon Updated');
+                return redirect('coupon')->with('successCouponUpdate', 'Coupon Updated');
             } else {
-                return redirect('dashboard/coupon')->with('errorCouponUpdate', 'Coupon Not Updated');
+                return redirect('coupon')->with('errorCouponUpdate', 'Coupon Not Updated');
             }
         }
     }

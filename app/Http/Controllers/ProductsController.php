@@ -76,13 +76,13 @@ class ProductsController extends Controller
                         ]);
                     }
                     if ($insertImage) {
-                        return redirect('dashboard/product')->with('successProduct', 'User Added');
+                        return redirect('product')->with('successProduct', 'User Added');
                     } else {
-                        return redirect('dashboard/product')->with('errorProduct', 'User Not Added');
+                        return redirect('product')->with('errorProduct', 'User Not Added');
                     }
                 }
             } else {
-                return redirect('dashboard/product')->with('errorProduct', 'User Not Added');
+                return redirect('product')->with('errorProduct', 'User Not Added');
             }
         }
     }

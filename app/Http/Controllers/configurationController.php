@@ -41,7 +41,7 @@ class configurationController extends Controller
             "admin_email" => $request->adminEmail,
             "notification_email" => $request->notificationEmail
         ]);
-        return redirect("dashboard/configuration");
+        return redirect("configuration");
     }
 
     /**
@@ -81,7 +81,7 @@ class configurationController extends Controller
             "admin_email" => $request->adminEmail,
             "notification_email" => $request->notificationEmail,
         ]);
-        return redirect("dashboard/configuration");
+        return redirect("configuration");
     }
 
     /**

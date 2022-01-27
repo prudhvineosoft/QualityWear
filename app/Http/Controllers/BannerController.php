@@ -53,9 +53,9 @@ class BannerController extends Controller
             $image->move(public_path('uploads/'), $name);
             $createBanner->b_img_path = $name;
             if ($createBanner->save()) {
-                return redirect('dashboard/banner')->with('successBanner', 'Banner Added');
+                return redirect('banner')->with('successBanner', 'Banner Added');
             } else {
-                return redirect('dashboard/banner')->with('errorBanner', 'Banner Not Added');
+                return redirect('banner')->with('errorBanner', 'Banner Not Added');
             }
         }
     }
@@ -110,9 +110,9 @@ class BannerController extends Controller
                     'b_img_path' => $name,
                 ]);
                 if ($updateBanner) {
-                    return redirect('dashboard/banner')->with('successBannerUpdate', 'Banner Updated');
+                    return redirect('banner')->with('successBannerUpdate', 'Banner Updated');
                 } else {
-                    return redirect('dashboard/banner')->with('errorBannerUpdate', 'Banner Not Updated');
+                    return redirect('banner')->with('errorBannerUpdate', 'Banner Not Updated');
                 }
             }
         } else {
@@ -122,9 +122,9 @@ class BannerController extends Controller
                     'b_status' => $request->b_status
                 ]);
                 if ($updateBanner) {
-                    return redirect('dashboard/banner')->with('successBannerUpdate', 'Banner Updated');
+                    return redirect('banner')->with('successBannerUpdate', 'Banner Updated');
                 } else {
-                    return redirect('dashboard/banner')->with('errorBannerUpdate', 'Banner Not Updated');
+                    return redirect('banner')->with('errorBannerUpdate', 'Banner Not Updated');
                 }
             }
         }

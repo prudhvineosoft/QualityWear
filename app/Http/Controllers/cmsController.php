@@ -59,7 +59,7 @@ class cmsController extends Controller
                 return back()->with("msg", "not uploaded");
             }
 
-            return redirect("dashboard/cms")->with("msg", "not uploaded");
+            return redirect("cms")->with("msg", "not uploaded");
         }
     }
 
@@ -120,7 +120,7 @@ class cmsController extends Controller
             }
         }
 
-        return redirect("dashboard/cms")->with("msg", "not uploaded");
+        return redirect("cms")->with("msg", "not uploaded");
     }
 
     /**

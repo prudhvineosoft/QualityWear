@@ -50,9 +50,9 @@ class UserController extends Controller
                 'status' => $request->status
             ]);
             if ($status) {
-                return redirect('dashboard/users')->with('successUser', 'User Added');
+                return redirect('users')->with('successUser', 'User Added');
             } else {
-                return redirect('dashboard/users')->with('errorUser', 'User Not Added');
+                return redirect('users')->with('errorUser', 'User Not Added');
             }
         }
     }

@@ -47,8 +47,6 @@ class RegisteredUserController extends Controller
         $user->attachRole($request->role_id);
         event(new Registered($user));
 
-        Auth::login($user);
-
-        return redirect('dashboard/users');
+        return redirect('/users');
     }
 }

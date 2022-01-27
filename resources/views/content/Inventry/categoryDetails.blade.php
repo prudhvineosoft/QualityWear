@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-</head>
+@include('layouts.customHead')
 
 <body>
     @extends('layouts.master')
@@ -17,7 +9,7 @@
         <div class="col-md-12 mt-2">
             <div class="bg-transparent d-flex justify-content-between clearfix ">
                 <div>
-                    <a href="/dashboard/category" class="btn btn-secondary float-start mb-4">
+                    <a href="/category" class="btn btn-secondary float-start mb-4">
                         Back
                     </a>
                 </div>
@@ -115,8 +107,8 @@
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <form class="bg-dark" method="POST"
-                                            action="/dashboard/category/{{ $category[0]->id }}" class="">
+                                        <form class="bg-dark" method="POST" action="/category/{{ $category[0]->id }}"
+                                            class="">
                                             @csrf
                                             @method('PUT')
                                             <!-- Name -->
@@ -176,7 +168,7 @@
                     <div class="card">
                         <div class="card-header bg-gray table-heading pl-5 pr-5">
                             <h3 class="card-title">Products Table</h3>
-                            <a href="/dashboard/product/create" class="btn btn-primary ml-auto">Add Product</a>
+                            <a href="/product/create" class="btn btn-primary ml-auto">Add Product</a>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body bg-dark text-center">
@@ -212,7 +204,7 @@
                                                 <a href="product/{{ $each->id }}"><i
                                                         class="far fa-folder-open edit text-secondary"></i></a>
 
-                                                <form method="POST" action="/dashboard/product/{{ $each->id }}">
+                                                <form method="POST" action="/product/{{ $each->id }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button onclick="return myFunction();" type="submit"

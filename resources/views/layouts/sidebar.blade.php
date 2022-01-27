@@ -43,7 +43,7 @@
                  with font-awesome or any other icon font library -->
             @if(Auth::user()->hasRole('admin|superadmin'))
             <li class="nav-item mt-2">
-              <a href="/dashboard/users" class="nav-link {{ (request()->is('dashboard/users*'))  ? 'active' : '' }}">
+              <a href="/users" class="nav-link {{ (request()->is('users*'))  ? 'active' : '' }}">
                 <i class="fas fa-users nav-icon"></i>
                 <p>
                   User Management
@@ -63,15 +63,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/dashboard/category "
-                    class="nav-link {{ (request()->is('dashboard/category*'))  ? 'active' : '' }}">
+                  <a href="/category " class="nav-link {{ (request()->is('category*'))  ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Category Management</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="/dashboard/product "
-                    class="nav-link {{ (request()->is('dashboard/product*'))  ? 'active' : '' }}">
+                  <a href="/product " class="nav-link {{ (request()->is('product*'))  ? 'active' : '' }}">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Product Management</p>
                   </a>
@@ -81,8 +79,7 @@
             @endif
             @if(Auth::user()->hasRole('admin|superadmin|order manager') )
             <li class="nav-item mt-2">
-              <a href="/dashboard/orderManagement"
-                class="nav-link {{ (request()->is('dashboard/orderManagement*'))  ? 'active' : '' }}">
+              <a href="/orderManagement" class="nav-link {{ (request()->is('orderManagement*'))  ? 'active' : '' }}">
                 <i class="fas fa-boxes nav-icon"></i>
                 <p>
                   Order Management
@@ -92,7 +89,7 @@
             @endif
             @if(Auth::user()->hasRole('admin|superadmin|order manager'))
             <li class="nav-item mt-2">
-              <a href="/dashboard/banner" class="nav-link {{ (request()->is('dashboard/banner*'))  ? 'active' : '' }}">
+              <a href="/banner" class="nav-link {{ (request()->is('banner*'))  ? 'active' : '' }}">
                 <i class=" fas fa-bullhorn nav-icon"></i>
                 <p>
                   Banner Management
@@ -102,7 +99,7 @@
             @endif
             @if(Auth::user()->hasRole('admin|superadmin'))
             <li class="nav-item mt-2">
-              <a href="/dashboard/coupon" class="nav-link {{ (request()->is('dashboard/coupon*'))  ? 'active' : '' }}">
+              <a href="/coupon" class="nav-link {{ (request()->is('coupon*'))  ? 'active' : '' }}">
                 <i class="fas fa-ticket-alt nav-icon"></i>
                 <p>
                   Coupon Management
@@ -112,8 +109,7 @@
             @endif
             @if(Auth::user()->hasRole('admin|superadmin'))
             <li class="nav-item mt-2">
-              <a href="/dashboard/contacts"
-                class="nav-link {{ (request()->is('dashboard/contacts*'))  ? 'active' : '' }}">
+              <a href="/contacts" class="nav-link {{ (request()->is('contacts*'))  ? 'active' : '' }}">
                 <i class="far fa-id-badge nav-icon"></i>
                 <p>
                   Contact Us
@@ -123,8 +119,7 @@
             @endif
             @if(Auth::user()->hasRole('admin|superadmin'))
             <li class="nav-item mt-2">
-              <a href="/dashboard/configuration"
-                class="nav-link {{ (request()->is('dashboard/configuration*'))  ? 'active' : '' }}">
+              <a href="/configuration" class="nav-link {{ (request()->is('configuration*'))  ? 'active' : '' }}">
 
                 <i class="fab fa-airbnb nav-icon"></i>
                 <p>
@@ -135,7 +130,7 @@
             @endif
             @if(Auth::user()->hasRole('admin|superadmin'))
             <li class="nav-item mt-2">
-              <a href="/dashboard/cms" class="nav-link {{ (request()->is('dashboard/cms*'))  ? 'active' : '' }}">
+              <a href="/cms" class="nav-link {{ (request()->is('cms*'))  ? 'active' : '' }}">
                 <i class="fab fa-staylinked nav-icon"></i>
                 <p>
                   CMS
@@ -145,8 +140,7 @@
             @endif
             @if(Auth::user()->hasRole('admin|superadmin'))
             <li class="nav-item mt-2">
-              <a href="/dashboard/reports"
-                class="nav-link {{ (request()->is('dashboard/reports*'))  ? 'active' : '' }}">
+              <a href="/reports" class="nav-link {{ (request()->is('reports*'))  ? 'active' : '' }}">
                 <i class="fas fa-bug nav-icon"></i>
                 <p>
                   Reports

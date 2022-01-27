@@ -33,30 +33,30 @@ Route::group(['middleware' => ['auth']], function () {
 });
 // for admin
 Route::group(['middleware' => ['auth', 'role:admin|superadmin']], function () {
-    Route::get('/dashboard/users', [UserController::class, 'showUsers']);
-    Route::get('/dashboard/users/register', [UserController::class, 'addUserPage']);
+    Route::get('/users', [UserController::class, 'showUsers']);
+    Route::get('/users/register', [UserController::class, 'addUserPage']);
     Route::post('/addUserPost', [UserController::class, 'addUser']);
     Route::get('/deleteUser/{id}', [UserController::class, 'deleteUser']);
-    Route::get('/dashboard/users/{id}/userDetails', [UserController::class, 'userDetails']);
+    Route::get('/users/{id}/userDetails', [UserController::class, 'userDetails']);
     Route::post('/editUserPost', [UserController::class, 'editUser']);
 
     //banner management
 
-    Route::resource('dashboard/coupon', CouponController::class);
-    Route::resource('dashboard/contacts', ContactsController::class);
-    Route::resource('dashboard/cms', cmsController::class);
-    Route::resource('dashboard/configuration', configurationController::class);
-    Route::resource('dashboard/reports', ReportsController::class);
+    Route::resource('coupon', CouponController::class);
+    Route::resource('contacts', ContactsController::class);
+    Route::resource('cms', cmsController::class);
+    Route::resource('configuration', configurationController::class);
+    Route::resource('reports', ReportsController::class);
 });
 // for inventory manager
 Route::group(['middleware' => ['auth', 'role:inventory manager|admin|superadmin']], function () {
-    Route::resource('/dashboard/category', CategoryController::class);
-    Route::resource('dashboard/product', ProductsController::class);
+    Route::resource('/category', CategoryController::class);
+    Route::resource('/product', ProductsController::class);
 });
 // order manager
 Route::group(['middleware' => ['auth', 'role:order manager|admin|superadmin']], function () {
-    Route::resource('dashboard/banner', BannerController::class);
-    Route::resource('dashboard/orderManagement', OrderController::class);
+    Route::resource('banner', BannerController::class);
+    Route::resource('orderManagement', OrderController::class);
 });
 
 

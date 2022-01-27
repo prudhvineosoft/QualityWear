@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-</head>
+@include('layouts.customHead')
 
 <body>
     @extends('layouts.master')
@@ -109,7 +101,7 @@
                                         <a href="coupon/{{ $each->id }}/edit"><i
                                                 class="fas fa-edit edit text-info"></i></a>
 
-                                        <form method="POST" action="/dashboard/coupon/{{ $each->id }}">
+                                        <form method="POST" action="/coupon/{{ $each->id }}">
                                             @csrf
                                             @method('DELETE')
                                             <button onclick="return myFunction();" type="submit"

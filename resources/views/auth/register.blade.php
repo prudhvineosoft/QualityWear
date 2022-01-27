@@ -74,7 +74,7 @@
                         </div>
                         <input type="hidden" value=0 name='status'>
                         <div class="d-flex justify-content-between mt-4">
-                            <a href="/dashboard/users" class="btn btn-secondary">Cansel</a>
+                            <a href="/users" class="btn btn-secondary">Cansel</a>
                             <input type="submit" class="btn btn-info" value="Add-User">
                         </div>
                     </form>

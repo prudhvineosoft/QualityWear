@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-</head>
+@include('layouts.customHead')
 
 <body>
     @extends('layouts.master')
@@ -84,31 +76,31 @@
                                 @endif
                                 <td>{{ $each->created_at }}</td>
                                 <td>
-                                    <div class="d-flex justify-content-center">
-                                        <a href="orderManagement/{{ $each->id }}"><i
-                                                class="far fa-folder-open edit text-secondary"></i></a>
+                                    <div class="d-flex justify-content-center"></div>
+                                    <a href="orderManagement/{{ $each->id }}"><i
+                                            class="far fa-folder-open edit text-secondary"></i></a>
 
-                                        <form method="POST" action="/dashboard/orderManagement/{{ $each->id }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button onclick="return myFunction();" type="submit"
-                                                class="delete-button"><i class="fas fa-trash delete"></i></button>
-                                        </form>
-                                    </div>
-
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-
-                    </table>
-
-                    {{ $orderData->links('pagination::bootstrap-4') }}
-
+                                    <form method="POST" action="/orderManagement/{{ $each->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button onclick="return myFunction();" type="submit" class="delete-button"><i
+                                                class="fas fa-trash delete"></i></button>
+                                    </form>
                 </div>
-                <!-- /.card-body -->
+
+                </td>
+                </tr>
+                @endforeach
+                </tbody>
+
+                </table>
+
+                {{ $orderData->links('pagination::bootstrap-4') }}
+
             </div>
+            <!-- /.card-body -->
         </div>
+    </div>
     </div>
     <script>
         function myFunction() {

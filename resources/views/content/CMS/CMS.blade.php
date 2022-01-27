@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-</head>
+@include('layouts.customHead')
 
 <body>
     @extends('layouts.master')
@@ -19,7 +11,7 @@
                     @if(Session::has('msg'))
                     <div class="alert alert-info">{{Session::get('msg')}}</div>
                     @endif
-                    <form method="POST" enctype="multipart/form-data" action="/dashboard/cms">
+                    <form method="POST" enctype="multipart/form-data" action="/cms">
                         <h2 class="text-center text-primary">CMS</h2>
                         @csrf()
                         <div class="form-group m-auto ">
@@ -43,7 +35,7 @@
                             @endif
                         </div>
                         <div class="d-flex justify-content-between mt-4">
-                            <a href="/dashboard/cms" class="btn btn-secondary">Cansel</a>
+                            <a href="/cms" class="btn btn-secondary">Cansel</a>
                             <input type="submit" class="btn btn-info" value="Add-CMS">
                         </div>
                     </form>

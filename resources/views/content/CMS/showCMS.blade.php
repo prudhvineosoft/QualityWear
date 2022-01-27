@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-</head>
+@include('layouts.customHead')
 
 <body>
     @extends('layouts.master')
@@ -69,10 +61,10 @@
                                 </td>
 
                                 <td>
-                                    <a href="/dashboard/cms/{{$i->id}}/edit" class="btn btn-info">Edit</a>
+                                    <a href="/cms/{{$i->id}}/edit" class="btn btn-info">Edit</a>
                                 </td>
                                 <td>
-                                    <form action="/dashboard/cms/{{$i->id}}/" method="post">
+                                    <form action="/cms/{{$i->id}}/" method="post">
                                         @csrf()
                                         @method('delete')
                                         <button type="submit"

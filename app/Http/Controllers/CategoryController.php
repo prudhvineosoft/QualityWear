@@ -47,9 +47,9 @@ class CategoryController extends Controller
             $createCategory->c_name = $request->c_name;
             $createCategory->description = $request->description;
             if ($createCategory->save()) {
-                return redirect('dashboard/category')->with('successCategory', 'User Added');
+                return redirect('category')->with('successCategory', 'User Added');
             } else {
-                return redirect('dashboard/category')->with('errorCategory', 'User Not Added');
+                return redirect('category')->with('errorCategory', 'User Not Added');
             }
         }
     }

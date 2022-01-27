@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-</head>
+@include('layouts.customHead')
 
 <body>
     @extends('layouts.master')
@@ -36,7 +28,7 @@
                 </div>
                 @endif
                 @if (session()->has('successDelete'))
-                <div class=" alert alert-danger alert-dismissible fade show" style="" role="alert">
+                <div class=" alert alert-success alert-dismissible fade show" style="" role="alert">
                     <strong>Success!</strong> {{ session()->get('successDelete') }}
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -93,7 +85,7 @@
                                             class="far fa-folder-open edit text-secondary"></i></a>
 
                                     <a onclick="return myFunction();" href="/deleteUser/{{ $each->user_id }}"><i
-                                            class="fas fa-trash delete ml-4"></i></a>
+                                            class="fas fa-trash delete text-danger ml-4"></i></a>
                                 </td>
                             </tr>
                             @endforeach

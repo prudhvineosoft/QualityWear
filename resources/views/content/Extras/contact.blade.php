@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-</head>
+@include('layouts.customHead')
 
 <body>
     @extends('layouts.master')
@@ -88,7 +80,7 @@
                                         <a href="contacts/{{ $each->id }}"><i
                                                 class="far fa-folder-open edit text-secondary"></i></a>
 
-                                        <form method="POST" action="/dashboard/contacts/{{ $each->id }}">
+                                        <form method="POST" action="/contacts/{{ $each->id }}">
                                             @csrf
                                             @method('DELETE')
                                             <button onclick="return myFunction();" type="submit"

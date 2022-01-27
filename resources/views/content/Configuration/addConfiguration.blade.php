@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-</head>
+@include('layouts.customHead')
 
 <body>
     @extends('layouts.master')
@@ -21,7 +13,7 @@
                         <label>{{Session::get('msg')}}</label>
                         @endif
                     </div>
-                    <form method="post" action="/dashboard/configuration">
+                    <form method="post" action="/configuration">
                         <h2 class="text-center text-primary">Add Configuration</h2>
                         @csrf()
                         <div class="row form-group m-auto ">

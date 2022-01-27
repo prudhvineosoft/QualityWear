@@ -18,7 +18,7 @@
             <h3>Quality Wear</h3>
         </div>
         <div>
-            <h4>Hellow {{ Auth::user()->name }}You're logged in! as a admin</h4>
+            <h4>Hello {{ Auth::user()->name }}You're logged in! as a admin</h4>
         </div>
 
     </div>
