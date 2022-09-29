@@ -19,6 +19,7 @@
         </div>
         <div>
             <h4>Hello {{ Auth::user()->name }}You're logged in! as a admin</h4>
+            
         </div>
 
     </div>

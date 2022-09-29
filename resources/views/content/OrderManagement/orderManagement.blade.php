@@ -76,31 +76,31 @@
                                 @endif
                                 <td>{{ $each->created_at }}</td>
                                 <td>
-                                    <div class="d-flex justify-content-center"></div>
-                                    <a href="orderManagement/{{ $each->id }}"><i
-                                            class="far fa-folder-open edit text-secondary"></i></a>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="orderManagement/{{ $each->id }}"><i
+                                                class="far fa-folder-open edit text-secondary"></i></a>
 
-                                    <form method="POST" action="/orderManagement/{{ $each->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button onclick="return myFunction();" type="submit" class="delete-button"><i
-                                                class="fas fa-trash delete"></i></button>
-                                    </form>
+                                        <form method="POST" action="/orderManagement/{{ $each->id }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button onclick="return myFunction();" type="submit"
+                                                class="delete-button"><i class="fas fa-trash delete"></i></button>
+                                        </form>
+                                    </div>
+
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+
+                    </table>
+
+                    {{ $orderData->links('pagination::bootstrap-4') }}
+
                 </div>
-
-                </td>
-                </tr>
-                @endforeach
-                </tbody>
-
-                </table>
-
-                {{ $orderData->links('pagination::bootstrap-4') }}
-
+                <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
         </div>
-    </div>
     </div>
     <script>
         function myFunction() {
